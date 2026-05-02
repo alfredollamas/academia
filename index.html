@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Éxito Académico · Alfredo Llamas</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1f3c;
+    --navy-light: #1a3460;
+    --gold: #c8a94a;
+    --gold-light: #e8c96a;
+    --cream: #faf8f3;
+    --white: #ffffff;
+    --gray: #6b7280;
+    --light-gray: #f3f4f0;
+    --text: #1a1a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(13,31,60,0.97);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    border-bottom: 1px solid rgba(200,169,74,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    font-weight: 500 !important;
+    color: var(--navy) !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 5% 80px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,169,74,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(26,52,96,0.8) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  .hero-buttons {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.1s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border: 1px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    background: rgba(200,169,74,0.15);
+    border: 1px solid rgba(200,169,74,0.15);
+  }
+
+  .stat-box {
+    background: rgba(255,255,255,0.03);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .stat-box:hover { background: rgba(200,169,74,0.08); }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* MARCAS */
+  .brands-strip {
+    background: var(--navy-light);
+    padding: 1.2rem 5%;
+    display: flex; align-items: center; justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(200,169,74,0.15);
+  }
+
+  .brand-pill {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .brand-pill .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* SECTION BASE */
+  section { padding: 100px 5%; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--gold);
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.8;
+    max-width: 600px;
+  }
+
+  /* MARCAS / SERVICIOS */
+  .services { background: var(--cream); }
+
+  .services-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: #e8e4db;
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover { transform: translateY(-4px); z-index: 1; box-shadow: 0 12px 40px rgba(13,31,60,0.12); }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    background: rgba(13,31,60,0.05);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .service-brand {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    background: var(--light-gray);
+    color: var(--navy);
+    border-radius: 1px;
+    text-transform: uppercase;
+  }
+
+  /* CURSOS */
+  .courses { background: var(--navy); }
+
+  .courses .section-title { color: var(--white); }
+  .courses .section-sub { color: rgba(255,255,255,0.55); }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: rgba(200,169,74,0.1);
+    margin-top: 3rem;
+  }
+
+  .course-item {
+    background: rgba(255,255,255,0.03);
+    padding: 1.5rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .course-item:hover { background: rgba(200,169,74,0.07); }
+
+  .course-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: rgba(200,169,74,0.25);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .course-name {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--cream); }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .testi-card {
+    background: var(--white);
+    padding: 2rem;
+    border-left: 3px solid var(--gold);
+    position: relative;
+  }
+
+  .testi-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    line-height: 0.5;
+    margin-bottom: 1rem;
+    opacity: 0.4;
+  }
+
+  .testi-text {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .testi-author {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .testi-stars {
+    color: var(--gold);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+  }
+
+  /* YOUTUBE */
+  .youtube-section {
+    background: var(--navy-light);
+    padding: 80px 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .yt-content { max-width: 500px; }
+
+  .yt-content .section-title { color: var(--white); margin-bottom: 1rem; }
+
+  .yt-content p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .yt-badge {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: #FF0000;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .yt-badge:hover { opacity: 0.9; }
+
+  .yt-badge svg { width: 22px; height: 22px; fill: white; }
+
+  .yt-stat {
+    background: rgba(200,169,74,0.1);
+    border: 1px solid rgba(200,169,74,0.2);
+    padding: 2rem 3rem;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .yt-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .yt-stat-label {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* CONTACTO */
+  .contact { background: var(--cream); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .contact-info { }
+
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e8e4db;
+  }
+
+  .contact-item:last-child { border-bottom: none; }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+
+  .contact-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-value {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--navy);
+  }
+
+  .contact-form {
+    background: var(--white);
+    padding: 2.5rem;
+    border-top: 3px solid var(--gold);
+  }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group { margin-bottom: 1.2rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--cream);
+    border: 1px solid #e0dbd0;
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--navy);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    padding: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 0;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { background: var(--navy-light); }
+
+  /* FOOTER */
+  footer {
+    background: #080f1e;
+    padding: 3rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid rgba(200,169,74,0.15);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex; gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  .hero h1 { animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-sub { animation: fadeUp 0.6s 0.25s ease both; }
+  .hero-buttons { animation: fadeUp 0.6s 0.35s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.25s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .services-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Éxito Académico · <span>Alfredo Llamas</span></div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/34627742569?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios" target="_blank" class="nav-cta">💬 Solicitar info</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">Benavente · Zamora · Más de 15 años</div>
+      <h1>La educación que te hará <em>libre</em></h1>
+      <p class="hero-sub">Tres proyectos educativos de excelencia bajo un mismo techo. Acompañamos a estudiantes, familias y empresas a alcanzar sus metas académicas y profesionales.</p>
+      <div class="hero-buttons">
+        <a href="https://wa.me/34627742569?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios" target="_blank" class="btn-primary">💬 Solicitar información</a>
+        <a href="#servicios" class="btn-outline">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-box">
+        <span class="stat-number">+15</span>
+        <span class="stat-label">Años de experiencia</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number">5★</span>
+        <span class="stat-label">Valoración media</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number">+70</span>
+        <span class="stat-label">Reseñas Google</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Éxito en técnicas de estudio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS STRIP -->
+<div class="brands-strip">
+  <div class="brand-pill"><span class="dot"></span>Academia Alfredo Llamas</div>
+  <div class="brand-pill"><span class="dot"></span>British Language Centre</div>
+  <div class="brand-pill"><span class="dot"></span>Virtus Consultoría Educativa</div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="services" id="servicios">
+  <div class="services-intro">
+    <div>
+      <div class="section-label">Nuestros proyectos</div>
+      <h2 class="section-title">Tres marcas, una misma excelencia</h2>
+    </div>
+    <p class="section-sub">Bajo el paraguas de <strong style="font-weight:500;color:var(--navy);">Éxito Académico · Alfredo Llamas</strong> agrupamos tres proyectos educativos complementarios, cada uno especializado en un ámbito distinto pero unidos por la misma filosofía: acompañar a cada persona en su camino, con motivación, rigor y resultados reales. La <strong style="font-weight:500;color:var(--navy);">Academia Alfredo Llamas</strong> cubre el refuerzo académico integral; el <strong style="font-weight:500;color:var(--navy);">British Language Centre</strong> se ocupa de la formación en inglés con aval Cambridge; y <strong style="font-weight:500;color:var(--navy);">Virtus Consultoría Educativa</strong> orienta y acompaña a estudiantes y familias en sus decisiones educativas. Tres caminos, un mismo destino: el éxito.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">🇪🇸</div>
+      <div class="service-brand">Academia Alfredo Llamas</div>
+      <h3 class="service-title">Formación académica de excelencia, de primaria a la universidad</h3>
+      <p class="service-desc">Contamos con los mejores profesores especializados impartiendo todas las asignaturas, desde Primaria hasta estudios universitarios. Nuestro enfoque pedagógico va más allá del temario: acompañamos a cada alumno en su proceso, valoramos sus progresos individualmente y trabajamos para que desarrolle su máximo potencial.</p>
+      <p class="service-desc" style="margin-top:0.8rem;">Además del refuerzo en todas las materias, ofrecemos formación diferencial en <strong style="font-weight:500;color:var(--navy);">Técnicas de Estudio</strong> tanto para asignaturas teóricas como prácticas, <strong style="font-weight:500;color:var(--navy);">Mecanografía e Informática</strong> y un pionero <strong style="font-weight:500;color:var(--navy);">Curso de Inteligencia Artificial</strong> diseñado para preparar a los alumnos para los retos del futuro. Porque nuestra misión no es solo que aprueben: es que crezcan, se superen y descubran todo lo que son capaces de lograr.</p>
+      <div class="service-tags">
+        <span class="tag">Primaria</span>
+        <span class="tag">ESO</span>
+        <span class="tag">Bachillerato</span>
+        <span class="tag">Universidad</span>
+        <span class="tag">Técnicas de estudio</span>
+        <span class="tag">IA</span>
+        <span class="tag">Online</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🇬🇧</div>
+      <div class="service-brand">British Language Centre</div>
+      <h3 class="service-title">El inglés real que abre puertas, con el aval de Cambridge</h3>
+      <p class="service-desc">El inglés ya no es una opción: es la llave del futuro académico y profesional. En British Language Centre somos <strong style="font-weight:500;color:var(--navy);">centro preparador oficial adscrito a Cambridge</strong>, la certificación más reconocida del mundo, lo que garantiza una enseñanza rigurosa, actualizada y con resultados acreditados internacionalmente.</p>
+      <p class="service-desc" style="margin-top:0.8rem;">Impartimos clases de inglés en todos los cursos y niveles, desde los más pequeños hasta adultos y profesionales, con un enfoque doble: conseguir los <strong style="font-weight:500;color:var(--navy);">mejores resultados académicos</strong> en el colegio e instituto, y desarrollar un inglés real, fluido y funcional. Clases presenciales, online y a domicilio, en grupo o individuales, adaptadas a cada persona y objetivo. Porque aprender inglés con nosotros no es memorizar: es comunicarse, progresar y certificarlo.</p>
+      <div class="service-tags">
+        <span class="tag">Centro Cambridge</span>
+        <span class="tag">Todos los niveles</span>
+        <span class="tag">Académico</span>
+        <span class="tag">Empresas</span>
+        <span class="tag">Online</span>
+        <span class="tag">Domicilio</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🏛️</div>
+      <div class="service-brand">Virtus Consultoría Educativa</div>
+      <h3 class="service-title">Más que orientación: una hoja de ruta para el éxito vital</h3>
+      <p class="service-desc">Virtus nace de más de 15 años de experiencia educativa y una metodología propia con un <strong style="font-weight:500;color:var(--navy);">100% de éxito contrastado</strong>. No improvisamos: tenemos un sistema que funciona, probado con cientos de estudiantes, y lo aplicamos con la precisión y el cuidado que cada persona merece.</p>
+      <p class="service-desc" style="margin-top:0.8rem;">Diseñamos <strong style="font-weight:500;color:var(--navy);">planes de estudio personalizados para ESO y Bachillerato</strong>, optimizando horarios y hábitos para que el alumno rinda al máximo sin agotarse. Trabajamos tanto de forma individual como en grupo el <strong style="font-weight:500;color:var(--navy);">desarrollo de hábitos de estudio y el crecimiento personal</strong>, porque el éxito académico empieza por dentro.</p>
+      <p class="service-desc" style="margin-top:0.8rem;">Y cuando llega el momento de elegir el futuro, estamos ahí: nuestros <strong style="font-weight:500;color:var(--navy);">programas vocacionales y vitales propios</strong> acompañan a estudiantes y familias en la orientación académica y laboral, ayudándoles a descubrir su camino con claridad, confianza y criterio. Porque elegir bien el futuro es también una habilidad que se aprende.</p>
+      <div class="service-tags">
+        <span class="tag">Planes de estudio</span>
+        <span class="tag">ESO y Bach</span>
+        <span class="tag">Orientación vocacional</span>
+        <span class="tag">Hábitos</span>
+        <span class="tag">Desarrollo personal</span>
+        <span class="tag">Familias</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CURSOS -->
+<section class="courses" id="cursos">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="section-label">Lo que enseñamos</div>
+    <h2 class="section-title" style="color:var(--white);">Todas las asignaturas y disciplinas</h2>
+    <div class="courses-grid">
+      <div class="course-item"><span class="course-num">01</span><span class="course-name">Matemáticas<br>ESO y Bachillerato</span></div>
+      <div class="course-item"><span class="course-num">02</span><span class="course-name">Física y Química</span></div>
+      <div class="course-item"><span class="course-num">03</span><span class="course-name">Lengua Castellana<br>y Literatura</span></div>
+      <div class="course-item"><span class="course-num">04</span><span class="course-name">Inglés General<br>y Cambridge</span></div>
+      <div class="course-item"><span class="course-num">05</span><span class="course-name">Francés</span></div>
+      <div class="course-item"><span class="course-num">06</span><span class="course-name">Dibujo Técnico<br>y AutoCAD</span></div>
+      <div class="course-item"><span class="course-num">07</span><span class="course-name">Técnicas de Estudio<br>Metodología Pomodoro</span></div>
+      <div class="course-item"><span class="course-num">08</span><span class="course-name">Mecanografía<br>e Informática</span></div>
+      <div class="course-item"><span class="course-num">09</span><span class="course-name">Inteligencia<br>Artificial</span></div>
+      <div class="course-item"><span class="course-num">10</span><span class="course-name">Coaching y<br>Mentoring</span></div>
+      <div class="course-item"><span class="course-num">11</span><span class="course-name">Inglés<br>para Empresas</span></div>
+      <div class="course-item"><span class="course-num">12</span><span class="course-name">Orientación<br>Vocacional</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUTUBE / REDES -->
+<div class="youtube-section">
+  <div class="yt-content">
+    <div class="section-label">Síguenos en redes</div>
+    <h2 class="section-title">Contenido educativo gratuito</h2>
+    <p>Más de 2.300 suscriptores siguen nuestro canal de YouTube donde compartimos recursos, explicaciones y consejos para estudiantes. Síguenos también en Instagram y Facebook para contenido diario sobre educación, técnicas de estudio y motivación. ¡Aprende con nosotros desde casa!</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+      <a href="https://www.youtube.com/@academiaalfredollamas" target="_blank" class="yt-badge">
+        <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:white;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Ver canal en YouTube
+      </a>
+      <a href="https://www.instagram.com/exitoacademico" target="_blank" class="yt-badge" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
+        <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:white;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        Seguir en Instagram
+      </a>
+      <a href="https://www.facebook.com/ProfesorAlfredoLlamas/" target="_blank" class="yt-badge" style="background:#1877F2;">
+        <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:white;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Seguir en Facebook
+      </a>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:1rem;flex-shrink:0;">
+    <div class="yt-stat">
+      <span class="yt-stat-num">+2.300</span>
+      <span class="yt-stat-label">Suscriptores YouTube</span>
+    </div>
+    <div class="yt-stat">
+      <span class="yt-stat-num">@exitoacademico</span>
+      <span class="yt-stat-label">Instagram</span>
+    </div>
+    <div class="yt-stat">
+      <span class="yt-stat-num">Academia<br>Alfredo Llamas</span>
+      <span class="yt-stat-label">Facebook</span>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIOS -->
+<section class="testimonials" id="testimonios">
+  <div class="section-label">Lo que dicen nuestros alumnos</div>
+  <h2 class="section-title">Resultados que hablan por sí solos</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Ha sido fabuloso tener a Alfredo Llamas de profesor para mi hija durante estos durísimos años. Tanto en lo personal como en lo académico no ha podido ser mejor. ¡NIVEL DIOS!</p>
+      <div class="testi-author">Madre de alumna · Google</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Más que un profesor ha sido un gran maestro. Después de 5 años mano a mano seguiré contando con él durante mi trayectoria en la carrera. El ámbito académico de sus alumnos es su prioridad.</p>
+      <div class="testi-author">Alumno · Google</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Ha sido el profesor de mis hijas durante toda la ESO y el bachillerato. Muy buen profesor y una excelente persona, siempre preocupado por todo lo relacionado con sus estudios.</p>
+      <div class="testi-author">Padre de alumnas · Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="section-label">Estamos aquí para ayudarte</div>
+  <h2 class="section-title">Contacta con nosotros</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Dirección</div>
+          <div class="contact-value">Av. El Ferial, 11<br>49600 Benavente, Zamora</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-label">Teléfono y WhatsApp</div>
+          <div class="contact-value"><a href="tel:627742569" style="color:var(--navy);text-decoration:none;">627 742 569</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📘</div>
+        <div>
+          <div class="contact-label">Redes sociales</div>
+          <div class="contact-value">
+            <a href="https://www.facebook.com/ProfesorAlfredoLlamas/" target="_blank" style="color:var(--navy);text-decoration:none;">Facebook · Academia Alfredo Llamas</a><br>
+            <a href="https://www.youtube.com/@academiaalfredollamas" target="_blank" style="color:var(--navy);text-decoration:none;">YouTube · +2.300 suscriptores</a><br>
+            <a href="https://www.instagram.com/exitoacademico" target="_blank" style="color:var(--navy);text-decoration:none;">Instagram · @exitoacademico</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-title">Solicita información sin compromiso</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" placeholder="Tu teléfono">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label>Me interesa</label>
+        <select>
+          <option value="">Selecciona un servicio...</option>
+          <option>Academia Alfredo Llamas · Refuerzo escolar</option>
+          <option>Academia Alfredo Llamas · Técnicas de estudio</option>
+          <option>Academia Alfredo Llamas · Inteligencia Artificial</option>
+          <option>British Language Centre · Inglés general</option>
+          <option>British Language Centre · Cambridge</option>
+          <option>British Language Centre · Inglés para empresas</option>
+          <option>Virtus · Orientación académica</option>
+          <option>Virtus · Coaching para estudiantes</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mensaje (opcional)</label>
+        <textarea placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+      </div>
+      <button class="form-submit" onclick="alert('¡Gracias! Nos pondremos en contacto contigo pronto. También puedes llamarnos al 627 742 569')">Enviar solicitud</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Éxito Académico · <span>Alfredo Llamas</span></div>
+  <div class="footer-copy">© 2025 Academia Alfredo Llamas · British Language Centre · Virtus Consultoría Educativa</div>
+  <div class="footer-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#cursos">Cursos</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</footer>
+
+</body>
+</html>
